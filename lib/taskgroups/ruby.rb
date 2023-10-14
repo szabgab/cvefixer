@@ -12,6 +12,12 @@ class Ruby
     else
       l.info "skipping; you don't use rbenv"
     end
+    self.gem
+  end
+
+  def self.gem
+    l.info "updating gems"
+    system ( File.join ENV["HOME"], ".rbenv/shims/gem"), "update"
   end
 
   def self.all

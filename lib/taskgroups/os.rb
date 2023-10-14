@@ -43,7 +43,9 @@ class Os
       system "sudo apt upgrade -y"
     else
       l.error "i don't know what OS we're using"
+      return
     end
+    pkg_clean
   end
 
   def self.pkg_clean
@@ -62,6 +64,5 @@ class Os
 
   def self.all
     pkg_update
-    pkg_clean
   end
 end

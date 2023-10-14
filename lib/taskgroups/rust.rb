@@ -4,8 +4,12 @@ class Rust
   end
 
   def self.rustup
-    l.info "run rustup update"
-    system "rustup update"
+    if command? "rustup"
+      l.info "run rustup update"
+      system "rustup update"
+    else
+      l.info "skipping; you don't use rustup"
+    end
   end
 
   def self.cargo
@@ -14,7 +18,7 @@ class Rust
       system "cargo install --list | grep -E '^[[:space:]]' " \
         "| sed -E -e 's/[[:space:]]+//g' | xargs cargo install"
     else
-      l.info ""
+      l.info "skipping; you don't use cargo"
     end
   end
 
