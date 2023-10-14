@@ -1,5 +1,3 @@
-require "rake"
-
 module OSType
   OTHER = 0
   RHEL = 1

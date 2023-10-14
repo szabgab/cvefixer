@@ -1,8 +1,14 @@
-l = SemanticLogger["ruby"]
+class Ruby
+  def self.l
+    @l ||= SemanticLogger["misc"]
+  end
 
-taskgroup :ruby, "upgrade various ruby things" do
-  describe "update rbenv", l
-  task :rbenv do
-    sh "curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash"
+  def self.rbenv
+    l.info "updating rbenv installation"
+    system "curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash"
+  end
+
+  def self.all
+    rbenv
   end
 end
