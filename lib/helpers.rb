@@ -1,5 +1,4 @@
-
 def command?(name)
-    system "command", "-v", name,  :out => File::NULL
-    $?.success?
+  system "command", "-v", name, out: File::NULL
+  $?.success?
 end
