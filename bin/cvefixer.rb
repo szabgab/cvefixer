@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require "fileutils"
 require "semantic_logger"
+require_relative "../lib/cvefixer"
 require_relative "../lib/taskgroups/misc"
 require_relative "../lib/taskgroups/os"
 require_relative "../lib/taskgroups/ruby"
@@ -33,6 +34,10 @@ class App < Thor
   desc "rust", "update Rust-related items"
   def rust
     Rust.all
+  end
+  desc "version", "what version am I running?"
+  def version
+    puts "cvefixer #{CVEFixer::VERSION}"
   end
 end
 
