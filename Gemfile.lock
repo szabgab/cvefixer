@@ -145,8 +145,8 @@ PLATFORMS
 
 DEPENDENCIES
   peppermint!
-  rake
   semantic_logger (~> 4.14)
+  thor (~> 1.2)
 
 BUNDLED WITH
    2.4.19

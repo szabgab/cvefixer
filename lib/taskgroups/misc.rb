@@ -1,22 +1,25 @@
-module Misc
-  SemanticLogger["misc"]
-  def deno
+class Misc
+  def self.l 
+    @l ||= SemanticLogger["misc"]
+  end
+
+  def self.deno
     l.info "upgrading deno"
-    sh "deno upgrade"
+    system "deno upgrade"
   end
 
-  def npm
+  def self.npm
     l.info "update npm and its packages"
-    sh "sudo npm update -g npm"
-    sh "sudo npm update -g"
+    system "sudo npm update -g npm"
+    system "sudo npm update -g"
   end
 
-  def flatpak
+  def self.flatpak
     l.info "update flatpak"
-    sh "sudo flatpak update -y"
+    system "sudo flatpak update -y"
   end
 
-  def all
+  def self.all
     deno
     npm
     flatpak

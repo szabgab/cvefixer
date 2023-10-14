@@ -1,9 +1,17 @@
 #!/usr/bin/env ruby
-require "peppermint/rake/ruby"
 require "fileutils"
 require "semantic_logger"
-require_relative "lib/rake_helpers/taskgroup"
-require_relative "lib/rakesible"
+require_relative "../lib/taskgroups/misc"
+require "thor"
 
 SemanticLogger.add_appender(io: $stdout, formatter: :color)
 SemanticLogger["main"]
+
+class App < Thor
+  desc "misc", "update miscellaneous apps"
+  def misc
+    Misc.all
+  end
+end
+
+App.start
