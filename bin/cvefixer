@@ -2,15 +2,25 @@
 require "fileutils"
 require "semantic_logger"
 require_relative "../lib/taskgroups/misc"
+require_relative "../lib/taskgroups/os"
 require "thor"
 
 SemanticLogger.add_appender(io: $stdout, formatter: :color)
 SemanticLogger["main"]
 
 class App < Thor
+  desc "all", "update everything"
+  def all
+    Misc.all
+    Os.all
+  end
   desc "misc", "update miscellaneous apps"
   def misc
     Misc.all
+  end
+  desc "os", "update OS packages"
+  def os 
+    Os.all
   end
 end
 

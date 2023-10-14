@@ -1,5 +1,5 @@
 class Misc
-  def self.l 
+  def self.l
     @l ||= SemanticLogger["misc"]
   end
 

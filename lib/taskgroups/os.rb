@@ -1,16 +1,18 @@
 require "rake"
 
-module Os
-  l = SemanticLogger["os"]
+module OSType
+  OTHER = 0
+  RHEL = 1
+  GENTOO = 2
+  UBUNTU = 3
+end
 
-  module OSType
-    OTHER = 0
-    RHEL = 1
-    GENTOO = 2
-    UBUNTU = 3
+class Os
+  def self.l
+    @l ||= SemanticLogger["os"]
   end
 
-  def os
+  def self.get_os
     case File.foreach("/etc/os-release").lazy.grep(/^ID=/).first
     when /fedora/
       OSType::RHEL
@@ -25,35 +27,33 @@ module Os
     end
   end
 
-  taskgroup :os, "upgrade os" do
-    describe "run a full os update and cleanup", l
-    task all: [:pkg_update, :pkg_clean]
-
-    describe "run the package manager update", l
-    task :pkg_update do
-      l.info "pulling from package mgr repos, then upgrading OS packages"
-      case os
-      when OSType::RHEL
-        sh "sudo dnf update -y"
-      when OSType::GENTOO
-        if Date.today > (DateTime.parse File.read "/var/db/repos/gentoo/metadata/timestamp.chk")
-          sh "sudo emaint --auto sync"
-        end
-        sh "sudo emerge -vuDN @world"
-      when OSType::UBUNTU
-        sh "sudo apt update"
-        sh "sudo apt upgrade -y"
+  def self.pkg_update
+    l.info "pulling from package mgr repos, then upgrading OS packages"
+    case get_os
+    when OSType::RHEL
+      system "sudo dnf update -y"
+    when OSType::GENTOO
+      if Date.today > (DateTime.parse File.read "/var/db/repos/gentoo/metadata/timestamp.chk")
+        system "sudo emaint --auto sync"
       end
+      system "sudo emerge -vuDN @world"
+    when OSType::UBUNTU
+      system "sudo apt update"
+      system "sudo apt upgrade -y"
     end
+  end
 
-    describe "clean the package manager's dependencies", l
-    task :pkg_clean do
-      case os
-      when OSType::RHEL
-        sh "sudo dnf autoremove"
-      when OSType::GENTOO
-        sh "sudo emerge --depclean"
-      end
+  def self.pkg_clean
+    case get_os
+    when OSType::RHEL
+      system "sudo dnf autoremove"
+    when OSType::GENTOO
+      system "sudo emerge --depclean"
     end
+  end
+
+  def self.all
+    pkg_update
+    pkg_clean
   end
 end
