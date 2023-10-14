@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+require "peppermint/rake/ruby"
+require "fileutils"
+require "semantic_logger"
+require_relative "lib/rake_helpers/taskgroup"
+require_relative "lib/rakesible"
+
+SemanticLogger.add_appender(io: $stdout, formatter: :color)
+SemanticLogger["main"]

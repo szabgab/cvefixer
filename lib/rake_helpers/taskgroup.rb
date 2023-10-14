@@ -9,10 +9,10 @@ def taskgroup(name, description, &block)
   end
 end
 
-def tasky(msg, l, *args, &block)
+def tasky(msg, l, *, &block)
   desc msg
-  task do ||
+  task do
     l.info msg
-    task(*args, &block)
+    task(*, &block)
   end
 end
