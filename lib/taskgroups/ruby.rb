@@ -5,7 +5,7 @@ class Ruby
 
   def self.rbenv
     l.info "updating rbenv installation"
-    system "curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash"
+    system "git", "-C", File.join(ENV["HOME"],".rbenv"), "pull", "origin"
   end
 
   def self.all

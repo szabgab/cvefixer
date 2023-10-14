@@ -31,7 +31,7 @@ class App < Thor
     Ruby.all
   end
   desc "rust", "update Rust-related items"
-  def ruby
+  def rust
     Rust.all
   end
 end
