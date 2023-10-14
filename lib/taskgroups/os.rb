@@ -29,13 +29,16 @@ class Os
     l.info "pulling from package mgr repos, then upgrading OS packages"
     case get_os
     when OSType::RHEL
+      l.info "updating this RHEL-like OS"
       system "sudo dnf update -y"
     when OSType::GENTOO
+      l.info "updating this gentoo install"
       if Date.today > (DateTime.parse File.read "/var/db/repos/gentoo/metadata/timestamp.chk")
         system "sudo emaint --auto sync"
       end
       system "sudo emerge -vuDN @world"
     when OSType::UBUNTU
+      l.info "updating this ubuntu OS"
       system "sudo apt update"
       system "sudo apt upgrade -y"
     end
