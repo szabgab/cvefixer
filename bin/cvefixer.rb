@@ -12,6 +12,10 @@ SemanticLogger.add_appender(io: $stdout, formatter: :color)
 SemanticLogger["main"]
 
 class App < Thor
+  def self.exit_on_failure?
+    true
+  end
+
   desc "all", "update everything"
   def all
     Misc.all
@@ -19,22 +23,27 @@ class App < Thor
     Ruby.all
     Rust.all
   end
+
   desc "misc", "update miscellaneous apps"
   def misc
     Misc.all
   end
+
   desc "os", "update OS packages"
   def os
     Os.all
   end
+
   desc "ruby", "update Ruby-related items"
   def ruby
     Ruby.all
   end
+
   desc "rust", "update Rust-related items"
   def rust
     Rust.all
   end
+
   desc "version", "what version am I running?"
   def version
     puts "cvefixer #{CVEFixer::VERSION}"

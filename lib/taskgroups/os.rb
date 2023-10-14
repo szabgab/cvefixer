@@ -39,7 +39,7 @@ class Os
       system "sudo emerge -vuDN @world"
     when OSType::UBUNTU
       l.info "detected ubuntu"
-      system "sudo apt update"
+      (system "sudo apt update") || return
       system "sudo apt upgrade -y"
     else
       l.error "i don't know what OS we're using"
