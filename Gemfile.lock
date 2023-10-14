@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/janie314/peppermint
-  revision: f0030e5a8c5898e2b657d4edba4f3c7f4077d95b
+  revision: ad71835c25f2b8cbac8b402b3fcb7650f2b88750
   specs:
-    peppermint (0.1.4)
+    peppermint (0.1.5)
       pry-byebug
       rake (~> 13.0)
       rdoc
@@ -145,8 +145,8 @@ PLATFORMS
 
 DEPENDENCIES
   peppermint!
-  rake
   semantic_logger (~> 4.14)
+  thor (~> 1.2)
 
 BUNDLED WITH
    2.4.19
