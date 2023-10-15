@@ -28,6 +28,7 @@ Commands:
 # Publishing this Gem to rubygems.org
 
 ```
+rm -v tmp/*
 gem build
 mv cvefixer*gem tmp
 cd tmp
