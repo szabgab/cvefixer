@@ -5,8 +5,15 @@ class Misc
 
   def self.deno
     if command? "deno"
+      cmd_path = which "deno"
       l.info "upgrading deno"
-      system "deno upgrade"
+      if cmd_path.index(ENV["HOME"]) == 0
+        system "deno upgrade"
+      else
+        context = selinux_context "deno"
+        system "sudo deno upgrade"
+        system "sudo", "chcon", context, which("deno")
+      end
     else
       l.info "skipping; you don't use deno"
     end
@@ -15,7 +22,7 @@ class Misc
   def self.npm
     if command? "npm"
       l.info "update npm and its packages"
-      system "sudo npm update -g npm"
+      (system "sudo npm update -g npm") || return
       system "sudo npm update -g"
     else
       l.info "skipping; you don't use npm"

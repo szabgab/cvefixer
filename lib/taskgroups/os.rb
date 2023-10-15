@@ -39,11 +39,13 @@ class Os
       system "sudo emerge -vuDN @world"
     when OSType::UBUNTU
       l.info "detected ubuntu"
-      system "sudo apt update"
+      (system "sudo apt update") || return
       system "sudo apt upgrade -y"
     else
       l.error "i don't know what OS we're using"
+      return
     end
+    pkg_clean
   end
 
   def self.pkg_clean
@@ -51,7 +53,7 @@ class Os
     case get_os
     when OSType::RHEL
       l.info "detected RHEL-like OS"
-      system "sudo dnf autoremove"
+      system "sudo dnf autoremove -y"
     when OSType::GENTOO
       l.info "detected gentoo (you are hard-core)"
       system "sudo emerge --depclean"
@@ -62,6 +64,5 @@ class Os
 
   def self.all
     pkg_update
-    pkg_clean
   end
 end
