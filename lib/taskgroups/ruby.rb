@@ -17,7 +17,9 @@ class Ruby
 
   def self.gem
     l.info "updating gems"
-    system ( File.join ENV["HOME"], ".rbenv/shims/gem"), "update"
+    gem_path = File.join ENV["HOME"], ".rbenv/shims/gem"
+    (system gem_path, "update") || return
+    system gem_path, "update", "--system"
   end
 
   def self.all
