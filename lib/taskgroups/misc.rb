@@ -5,8 +5,15 @@ class Misc
 
   def self.deno
     if command? "deno"
+      cmd_path = which "deno"
       l.info "upgrading deno"
-      system "deno upgrade"
+      if cmd_path.index(ENV["HOME"]) == 0
+        system "deno upgrade"
+      else
+        context = selinux_context "deno"
+        system "sudo deno upgrade"
+        system "chcon", context, which("deno")
+      end
     else
       l.info "skipping; you don't use deno"
     end
