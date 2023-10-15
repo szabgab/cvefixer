@@ -50,6 +50,7 @@ class Misc
   def self.all
     deno
     npm
+    bun
     flatpak
   end
 end
