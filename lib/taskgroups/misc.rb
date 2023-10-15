@@ -12,7 +12,7 @@ class Misc
       else
         context = selinux_context "deno"
         system "sudo deno upgrade"
-        system "chcon", context, which("deno")
+        system "sudo", "chcon", context, which("deno")
       end
     else
       l.info "skipping; you don't use deno"
