@@ -29,6 +29,15 @@ class Misc
     end
   end
 
+  def self.bun
+    if command? "bun"
+      l.info "update bun"
+      system "bun upgrade"
+    else
+      l.info "skipping; you don't use bun"
+    end
+  end
+
   def self.flatpak
     if command? "flatpak"
       l.info "update flatpak"
