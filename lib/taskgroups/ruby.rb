@@ -2,7 +2,7 @@ require_relative "../helpers"
 
 class Ruby
   def self.l
-    @l ||= SemanticLogger["misc"]
+    @l ||= SemanticLogger["ruby"]
   end
 
   def self.rbenv

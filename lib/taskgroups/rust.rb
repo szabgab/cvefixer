@@ -1,6 +1,6 @@
 class Rust
   def self.l
-    @l ||= SemanticLogger["misc"]
+    @l ||= SemanticLogger["rust"]
   end
 
   def self.rustup

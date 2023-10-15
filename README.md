@@ -9,8 +9,7 @@ Ruby! We recommend using [rbenv](https://github.com/rbenv/rbenv).
 # Installation
 
 ```shell
-bundle
-bundle exec rake install_local
+gem install cvefixer
 ```
 
 # Usage
@@ -24,4 +23,13 @@ Commands:
   cvefixer ruby            # update Ruby-related items
   cvefixer rust            # update Rust-related items
   cvefixer version         # what version am I running?
+```
+
+# Publishing this Gem to rubygems.org
+
+```
+gem build
+mv cvefixer*gem tmp
+cd tmp
+gem push cvefixer*gem
 ```
