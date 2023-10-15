@@ -53,7 +53,7 @@ class Os
     case get_os
     when OSType::RHEL
       l.info "detected RHEL-like OS"
-      system "sudo dnf autoremove"
+      system "sudo dnf autoremove -y"
     when OSType::GENTOO
       l.info "detected gentoo (you are hard-core)"
       system "sudo emerge --depclean"
