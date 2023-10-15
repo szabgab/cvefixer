@@ -34,7 +34,7 @@ class Os
     when OSType::GENTOO
       l.info "detected gentoo (you are hard-core)"
       if Date.today > (DateTime.parse File.read "/var/db/repos/gentoo/metadata/timestamp.chk")
-        system "sudo emaint --auto sync"
+        (system "sudo emaint --auto sync") || return
       end
       system "sudo emerge -vuDN @world"
     when OSType::UBUNTU
