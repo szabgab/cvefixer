@@ -2,7 +2,7 @@
 
 ### BEGIN: DO NOT EDIT ###
 proj = File.basename(__FILE__).split(".")[0]
-require_relative "lib/#{proj}/version"
+require_relative "lib/#{proj}"
 lib = File.expand_path(File.join(__dir__, "./lib"))
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 ### END: DO NOT EDIT ###
@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.version = CVEFixer::VERSION
   spec.authors = ["'j'"]
   spec.email = ["'pub@janie.page'"]
-  spec.summary = "A Gem of a dev environment"
+  spec.summary = "Update all your little Linux apps."
   spec.description = ""
   spec.homepage = "https://github.com/janie314/cvefixer"
   spec.required_ruby_version = ">= 3.0.0"
