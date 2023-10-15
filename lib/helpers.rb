@@ -1,7 +1,7 @@
 require "open3"
 
 def command?(name)
-  system "which", name, out: File::NULL
+  system "which", name, out: File::NULL, err: File::NULL
   $?.success?
 end
 
