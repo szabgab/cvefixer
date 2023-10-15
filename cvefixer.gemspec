@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.homepage = "https://github.com/janie314/cvefixer"
   spec.required_ruby_version = ">= 3.0.0"
   spec.metadata["homepage_uri"] = spec.homepage
+  spec.license = "BSD-3-Clause"
 
   # gem dependencies
   spec.add_dependency "semantic_logger", "~> 4.14"
