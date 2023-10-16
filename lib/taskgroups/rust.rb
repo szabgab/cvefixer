@@ -15,8 +15,8 @@ class Rust
   def self.cargo
     if command? "cargo"
       l.info "update cargo packages"
-      system "cargo install --list | grep -E '^[[:space:]]' " \
-        "| sed -E -e 's/[[:space:]]+//g' | xargs cargo install"
+      system "cargo install --list | grep -Ev '^[[:space:]]' " \
+        "| cut -d ' ' -f 1 | xargs cargo install"
     else
       l.info "skipping; you don't use cargo"
     end
