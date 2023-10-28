@@ -7,8 +7,8 @@ task :publish do
   sh "mv cvefixer-#{CVEFixer::VERSION}.gem tmp"
   sh "gem push ./tmp/cvefixer-#{CVEFixer::VERSION}.gem"
   puts "ok. now merge into main. hit enter twice when done."
-  gets
-  gets
+  $stdin.gets
+  $stdin.gets
   sh "git checkout main"
   sh "git pull origin main"
   sh "git", "tag", "v#{CVEFixer::VERSION}"

@@ -1,3 +1,5 @@
+require_relative "../helpers"
+
 class Misc
   def self.l
     @l ||= SemanticLogger["misc"]
