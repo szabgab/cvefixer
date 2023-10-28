@@ -10,5 +10,5 @@ def which(name)
 end
 
 def selinux_context(name)
-  (Open3.capture2 "stat", "/home/janie/.deno/bin/deno").first.match(/Context: (.*)/)[1]
+  (Open3.capture2 "stat", which("deno")).first.match(/Context: (.*)/)[1]
 end
