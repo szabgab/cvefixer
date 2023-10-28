@@ -57,6 +57,9 @@ class Os
     when OSType::GENTOO
       l.info "detected gentoo (you are hard-core)"
       system "sudo emerge --depclean"
+    when OSType::UBUNTU
+      l.info "detected ubuntu"
+      system "sudo apt autoremove -y"
     else
       l.error "i don't know what OS we're using"
     end
