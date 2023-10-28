@@ -6,12 +6,12 @@ def command?(name)
 end
 
 def which(name)
-  (Open3.capture2 "which", name)[0].chop
+  (Open3.capture2 "which", name).first.chop
 end
 
 def selinux_context(name)
   ctx = (Open3.capture2 "stat", which(name)).first.match(/Context: (.*)/)
-  if ctx.instance_of Array
+  if ctx.instance_of? Array
     ctx[1]
   end
 end
