@@ -10,7 +10,7 @@ def which(name)
 end
 
 def selinux_context(name)
-  ctx = (Open3.capture2 "stat", which(name))[0].match(/Context: (.*)/)
+  ctx = (Open3.capture2 "stat", which(name)).first.match(/Context: (.*)/)
   if ctx.instance_of Array
     ctx[1]
   end

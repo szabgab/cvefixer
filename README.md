@@ -24,13 +24,3 @@ Commands:
   cvefixer rust            # update Rust-related items
   cvefixer version         # what version am I running?
 ```
-
-# Publishing this Gem to rubygems.org
-
-```
-rm -v tmp/*
-gem build
-mv cvefixer*gem tmp
-cd tmp
-gem push cvefixer*gem
-```

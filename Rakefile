@@ -5,7 +5,7 @@ task :publish do
   sh "rm -v tmp/*"
   sh "gem build"
   sh "mv cvefixer-#{CVEFixer::VERSION}.gem tmp"
-  sh "cd tmp; gem push cvefixer-#{CVEFixer::VERSION}.gem"
+  sh "gem push ./tmp/cvefixer-#{CVEFixer::VERSION}.gem"
   puts "ok. now merge into main. hit enter twice when done."
   gets
   gets
