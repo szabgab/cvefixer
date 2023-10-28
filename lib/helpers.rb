@@ -10,8 +10,5 @@ def which(name)
 end
 
 def selinux_context(name)
-  ctx = (Open3.capture2 "stat", which(name)).first.match(/Context: (.*)/)
-  if ctx.instance_of? Array
-    ctx[1]
-  end
+  (Open3.capture2 "stat", "/home/janie/.deno/bin/deno").first.match(/Context: (.*)/)[1]
 end
