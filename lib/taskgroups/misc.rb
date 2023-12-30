@@ -24,8 +24,8 @@ class Misc
   def self.npm
     if command? "npm"
       l.info "update npm and its packages"
-      (system "sudo npm update -g npm") || return
-      system "sudo npm update -g"
+      (system "npm update -g npm") || return
+      system "npm update -g"
     else
       l.info "skipping; you don't use npm"
     end

@@ -21,8 +21,8 @@ Gem::Specification.new do |spec|
   spec.license = "BSD-3-Clause"
 
   # gem dependencies
-  spec.add_dependency "semantic_logger", "~> 4.14"
-  spec.add_dependency "thor", "~> 1.2"
+  spec.add_dependency "semantic_logger", "~> 4.15"
+  spec.add_dependency "thor", "~> 1.3"
 
   ### BEGIN: DO NOT EDIT ###
   spec.files = Dir.chdir(__dir__) do
