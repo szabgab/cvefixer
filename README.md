@@ -18,16 +18,19 @@ gem install cvefixer
 Commands:
   cvefixer all             # update everything
   cvefixer help [COMMAND]  # Describe available commands or one specific command
+  cvefixer hooks           # run hooks defined in the cvefixer config file
   cvefixer misc            # update miscellaneous apps
   cvefixer os              # update OS packages
   cvefixer ruby            # update Ruby-related items
   cvefixer rust            # update Rust-related items
+  cvefixer test            # test command
   cvefixer version         # what version am I running?
 ```
 
 # Configuration
 
-You can define hook scripts to be run by `cvefixer all` and `cvefixer hooks`, specified as follows in the JSON config file:
+You can define hook scripts to be run by `cvefixer all` and `cvefixer hooks`,
+specified as follows in the JSON config file:
 
 ```json
 {
