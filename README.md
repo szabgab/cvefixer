@@ -23,7 +23,7 @@ Commands:
   deno     Update Deno
   flatpak  Update Flatpak packages
   hooks    Run configured hook scripts
-  os       Update OS packages
+  os       Update OS packages (supports RHEL-like, Gentoo, Ubuntu)
   rust     Update Rust and Cargo packages
   ruby     Update Ruby and Gems
   test     Test command for development

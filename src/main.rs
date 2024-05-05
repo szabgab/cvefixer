@@ -29,7 +29,7 @@ enum Commands {
     Flatpak {},
     /// Run configured hook scripts
     Hooks {},
-    /// Update OS packages
+    /// Update OS packages (supports RHEL-like, Gentoo, Ubuntu)
     OS {},
     /// Update Rust and Cargo packages
     Rust {},
