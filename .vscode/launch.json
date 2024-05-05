@@ -1,0 +1,45 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug executable 'cvefixer'",
+      "cargo": {
+        "args": [
+          "build",
+          "--bin=cvefixer",
+          "--package=cvefixer"
+        ],
+        "filter": {
+          "name": "cvefixer",
+          "kind": "bin"
+        }
+      },
+      "args": ["hooks"],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in executable 'cvefixer'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--bin=cvefixer",
+          "--package=cvefixer"
+        ],
+        "filter": {
+          "name": "cvefixer",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

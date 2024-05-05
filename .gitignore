@@ -1,2 +1,7 @@
 tmp
 cvefixer-*.gem
+
+
+# Added by cargo
+
+/target

@@ -1,30 +1,33 @@
 # cvefixer
 
-Fix CVEs (update your Linux computer's many little applications).
+Fix CVEs. (Update your Linux computer's many little applications.)
 
 # Requirements
 
-Ruby! We recommend using [rbenv](https://github.com/rbenv/rbenv).
+Rust!
 
 # Installation
 
 ```shell
-gem install cvefixer
+cargo install cvefixer
 ```
 
 # Usage
 
 ```shell
+Usage: cvefixer [COMMAND]
+
 Commands:
-  cvefixer all             # update everything
-  cvefixer help [COMMAND]  # Describe available commands or one specific command
-  cvefixer hooks           # run hooks defined in the cvefixer config file
-  cvefixer misc            # update miscellaneous apps
-  cvefixer os              # update OS packages
-  cvefixer ruby            # update Ruby-related items
-  cvefixer rust            # update Rust-related items
-  cvefixer test            # test command
-  cvefixer version         # what version am I running?
+  all      Run all update tasks
+  bun      Update Bun
+  deno     Update Deno
+  flatpak  Update Flatpak packages
+  hooks    Run configured hook scripts
+  os       Update OS packages
+  rust     Update Rust and Cargo packages
+  ruby     Update Ruby and Gems
+  test     Test command for development
+  help     Print this message or the help of the given subcommand(s)
 ```
 
 # Configuration
