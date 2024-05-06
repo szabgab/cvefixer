@@ -7,10 +7,10 @@ use std::process::Command;
 
 pub fn update() -> Result<(), Error> {
     if cmd_exists("flatpak") {
-        info!("updating bun");
+        info!("updating flatpak packages");
         exec(Command::new("sudo").args(["flatpak", "update", "-y"]))
     } else {
-        info!("no bun found");
+        info!("no flatpak found");
         Ok(())
     }
 }
