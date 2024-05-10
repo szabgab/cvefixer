@@ -1,7 +1,8 @@
 use clap::{Parser, Subcommand};
-use config::read_config;
+use config::{read_config, Config};
+use errors::Error;
 use log::{info, LevelFilter};
-use std::env;
+use std::{env, process::exit};
 use task::{bun, deno, flatpak, hooks, os, ruby, rust};
 
 mod config;
@@ -49,46 +50,65 @@ fn main() {
     // parse CLI args
     let args = Args::parse();
     let config = read_config().expect("there was an issue reading the configuration file");
-    match &args.command {
+    match main_aux(config, args.command) {
+        Ok(_) => (),
+        Err(e) => {
+            eprintln!("quitting with error {:?}", e);
+            exit(1);
+        }
+    }
+}
+fn main_aux(config: Option<Config>, cmd: Option<Commands>) -> Result<(), Error> {
+    match cmd {
         Some(cmd) => match cmd {
             Commands::All {} => {
-                rust::update().expect("there was an issue");
-                os::update().expect("there was an issue");
-                deno::update().expect("there was an issue");
-                bun::update().expect("there was an issue");
-                ruby::update().expect("there was an issue");
-                flatpak::update().expect("there was an issue");
+                rust::update()?;
+                os::update()?;
+                deno::update()?;
+                bun::update()?;
+                ruby::update()?;
+                flatpak::update()?;
+                Ok(())
             }
             Commands::Bun {} => {
-                bun::update().expect("there was an issue");
+                bun::update()?;
+                Ok(())
             }
             Commands::Deno {} => {
-                deno::update().expect("there was an issue");
+                deno::update()?;
+                Ok(())
             }
             Commands::Flatpak {} => {
-                flatpak::update().expect("there was an issue");
+                flatpak::update()?;
+                Ok(())
             }
             Commands::Hooks {} => match config {
                 Some(config) => {
-                    hooks::update(config).expect("there was an issue");
+                    hooks::update(config)?;
+                    Ok(())
                 }
                 None => {
                     info!("no hooks configured");
+                    Ok(())
                 }
             },
             Commands::OS {} => {
-                os::update().expect("there was an issue");
+                os::update()?;
+                Ok(())
             }
             Commands::Ruby {} => {
-                ruby::update().expect("there was an issue");
+                ruby::update()?;
+                Ok(())
             }
             Commands::Rust {} => {
-                rust::update().expect("there was an issue");
+                rust::update()?;
+                Ok(())
             }
             Commands::Test {} => {
                 info!("testing...");
+                Ok(())
             }
         },
-        None => (),
+        None => Ok(()),
     }
 }
