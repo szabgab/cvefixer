@@ -114,7 +114,7 @@ checksum = "0b6a852b24ab71dffc585bcb46eaf7959d175cb865a7152e35b348d1b2960422"
 
 [[package]]
 name = "cvefixer"
-version = "0.8.0"
+version = "0.9.0"
 dependencies = [
  "clap",
  "fastrand",
