@@ -4,6 +4,7 @@ version = "0.9.0"
 edition = "2021"
 description = "Fix all vulnerabilities that are fixed."
 license = "BSD-3-Clause"
+repository = "https://github.com/janie314/cvefixer"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
